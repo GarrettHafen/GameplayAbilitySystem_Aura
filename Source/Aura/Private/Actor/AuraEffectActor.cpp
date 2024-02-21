@@ -24,7 +24,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 {
 	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 
-	FGameplayEffectContextHandle EffectContextHandle = TargetASC->MakeEffectContext();
+FGameplayEffectContextHandle EffectContextHandle = TargetASC->MakeEffectContext();
 	if(TargetASC == nullptr)return;
 
 	check(GameplayEffectClass);
