@@ -188,6 +188,7 @@ void AAuraPlayerController::SetupInputComponent()
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
+	bAutoRunning = false;
 	//Getting the direction from the camera to the player to get the forward and right directions but the pitch and roll are getting zeroed out. 
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
 	const FRotator Rotation = GetControlRotation();
