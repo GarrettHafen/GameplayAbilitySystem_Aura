@@ -7,7 +7,6 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "Aura/Aura.h"
 #include "Components/CapsuleComponent.h"
-#include "Character/AuraCharacterBase.h"
 #include "Kismet/GameplayStatics.h"
 
 AAuraCharacterBase::AAuraCharacterBase()
@@ -70,6 +69,11 @@ int32 AAuraCharacterBase::GetMinionCount_Implementation()
 void AAuraCharacterBase::IncrementMinionCount_Implementation(int32 Amount)
 {
 	MinionCount += Amount;
+}
+
+ECharacterClass AAuraCharacterBase::GetCharacterClass_Implementation()
+{
+	return CharacterClass;
 }
 
 void AAuraCharacterBase::MulticastHandleDeath_Implementation()
@@ -158,6 +162,7 @@ void AAuraCharacterBase::AddCharacterAbilities()
 	if(!HasAuthority()) return;
 
 	AuraASC->AddCharacterAbilities(StartupAbilities);
+	AuraASC->AddCharacterPassiveAbilities(StartupPassiveAbilities);
 	
 }
 
