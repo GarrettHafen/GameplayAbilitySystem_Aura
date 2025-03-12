@@ -99,6 +99,7 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 		const APawn* ControlledPawn = GetPawn();
 		if(FollowTime <= ShortPressThreshold && ControlledPawn)
 		{
+			
 			if(UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(),CachedDestination))
 			{
 				Spline->ClearSplinePoints();
@@ -106,8 +107,11 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 				{
 					Spline->AddSplinePoint(PointLoc, ESplineCoordinateSpace::World);
 				}
-				CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num()-1];
-				bAutoRunning = true;
+				if (NavPath->PathPoints.Num() > 0)
+				{
+					CachedDestination = NavPath->PathPoints[NavPath->PathPoints.Num() - 1];
+					bAutoRunning = true;
+				}
 				
 			}
 		}
