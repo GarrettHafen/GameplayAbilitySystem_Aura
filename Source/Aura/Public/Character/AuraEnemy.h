@@ -28,7 +28,7 @@ public:
 
 	/** Combat Interface */
 	virtual int GetPlayerLevel_Implementation() override;
-	virtual void Die() override;
+	virtual void Die(const FVector& DeathImpulse) override;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
 	float LifeSpan = 10.f;
 	virtual void SetCombatTarget_Implementation(AActor* InCombatTarget) override;
